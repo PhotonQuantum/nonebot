@@ -61,10 +61,11 @@ def on_natural_language(keywords: Union[Optional[Iterable], str, Callable] = Non
 
 
 class NLPSession(BaseSession):
-    __slots__ = ('msg', 'msg_text', 'msg_images')
+    __slots__ = ('msg', 'msg_text', 'msg_images', 'ctx')
 
     def __init__(self, bot: NoneBot, ctx: Context_T, msg: str):
         super().__init__(bot, ctx)
+        self.ctx = ctx
         self.msg = msg
         tmp_msg = Message(msg)
         self.msg_text = tmp_msg.extract_plain_text()
